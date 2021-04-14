@@ -6,7 +6,7 @@
 <meta name="Description" content="Photon: free online resources for a variety of things." />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<link rel='icon' href='https://upload.wikimedia.org/wikipedia/commons/f/f1/Ski_trail_rating_symbol_red_circle.png' type='image/png'/ > 
+<link rel='icon' href='https://lb123658.github.io/img/proton.png' type='image/png'/ > 
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet">   
 <style>
@@ -82,8 +82,72 @@ width: 13%;
 background: transparent;
 color: lightgrey;
 }
+#loader {
+position: fixed;
+top: 30%;
+left: 20%;
+width: 60%;
+height: 40%;
+border-radius: 15px;
+background: #525252;
+z-index: 2;
+cursor: default;
+visibility: visible;
+}
+#logo {
+height: 100px;
+width: 100px;
+}
+#loadP {
+position: absolute;
+top: 10%;
+left: 0%;
+width: 100%;
+color: lightgrey;
+pointer-events: none;
+font-size: 16px;
+text-align: center;
+}
+#loadingBar {
+height: 20px;
+width: 80%;
+background: red;
+border-radius: 10px;
+border: none;
+animation-name: example;
+animation-duration: 3.0s;
+animation-iteration-count: 1;
+}
+@keyframes example {
+ 
+  0% {width: 0px;}
+  33% {width: 80%;}
+  66%   {width: 0px;}
+  100% {width: 80%;}
+
+}
+#main {
+opacity: 0.5;
+pointer-events: none;
+}
+#about {
+position: absolute;
+bottom: 10px;
+left: 1%;
+width: 13%;
+height: 30px;
+background: #282828;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+}
+#about:hover {
+opacity: 0.8;
+}
 </style>
-<body onload="init()">
+<body onload="init(); setTimeout(load, 3500)">
+<div id="main">
 <!-- code editor section -->
 <textarea id="editor" placeholder="Write code here..."></textarea>
 
@@ -95,10 +159,22 @@ color: lightgrey;
 
 <input id="fileInput" type="file" name="file"/>
 <pre id="fileContent"></pre>
+<a href="https://lb123658.github.io/Proton/about" target="_blank">
+<button id="about">About</button></a>
 
 <!-- file storage -->
 <p id="r"></p>
+</div>
 
+
+<!-- loading bar -->
+<div id="loader">
+<p id="loadP">
+<img src="https://lb123658.github.io/img/proton.png" id="logo"/><br><br>
+Proton editor >> loading...<br><br>
+<button id="loadingBar"></button>
+</p>
+</div>
 <script>
 //file download
 function saveFot(textToWrite, fileNameToSaveAs)
@@ -150,6 +226,12 @@ function handleFileSelect(event){
 function handleFileLoad(event){
   console.log(event);
   document.getElementById('editor').textContent = event.target.result;
+}
+
+function load() {
+document.getElementById("loader").style.visibility = "hidden";
+document.getElementById("main").style.opacity = "1";
+document.getElementById("main").style.pointerEvents = "auto";
 }
 </script>
 </body>
