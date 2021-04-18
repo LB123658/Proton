@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proton Image editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="Photon: free online resources for a variety of things." />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/img/proton.png' type='image/png'/ > 
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet">   
+<style>
+* {
+font-family: 'Ubuntu', sans-serif;
+border: none;
+user-select: none;
+}
+body {
+background: #282828;
+}
+.control {
+width: 7.5%;
+height: 50px;
+background: transparent;
+color: #999999;
+border-radius: 2px;
+}
+.control:hover {
+opacity: 0.7;
+}
+#add-file {
+position: fixed;
+top: 0px;
+left: 0px;
+}
+#download {
+position: fixed;
+top: 0px;
+left: 7.5%;
+}
+#about {
+position: fixed;
+bottom: 10px;
+left: 1%;
+width: 13%;
+height: 30px;
+background: #282828;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+}
+#about:hover {
+opacity: 0.8;
+}
+#grey {
+position: fixed;
+top: 120px;
+left: 1%;
+width: 13%;
+cursor: pointer;
+}
+.effect-type {
+color: grey;
+font-size: 16px;
+cursor: default;
+}
+#greyP {
+position: fixed;
+top: 80px;
+left: 1%;
+}
+#canvas {
+position: absolute;
+top: 0px;
+left: 15%;
+min-width: 85%;
+min-height: 100%;
+background: white;
+z-index: -1;
+}
+#myImage {
+position: absolute;
+top: 2%;
+left: 2%;
+height: 96%;
+}
+#urlDiv {
+user-select: auto;
+position: absolute;
+top: 0px;
+left: 30%;
+width: 40%;
+height: 100px;
+background: #383838;
+z-index: 1;
+border-radius: 10px;
+visibility: hidden;
+}
+#url {
+position: absolute;
+top: 35px;
+height: 30px;
+left: 5%;
+background: #383838;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 65%;
+}
+#url:hover {
+opacity: 0.8;
+}
+#setUrl {
+position: absolute;
+top: 35px;
+height: 34px;
+right: 5%;
+background: #383838;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 20%;
+}
+#setUrl:hover {
+opacity: 0.8;
+}
+#ui {
+z-index: 1;
+background: #282828;
+}
+
+</style>
+<body>
+<div id="ui">
+<!-- controls -->
+<button class="control" id="add-file" title="Add photo by URL" onclick="startCreate()"><span class="material-icons">add_circle</span></button>
+<button class="control" id="download" title="Download file"><span class="material-icons">save_alt</span></button>
+
+<!-- photo effects -->
+<p class="effect-type" id="greyP">Greyscale <span id="greyAmount"></span></p>
+<input type="range" id="grey" onclick="greyLevel(); bw()" min="0" max="200">
+
+<!-- url input -->
+<div id="urlDiv">
+<input type="text" id="url">
+<button id="setUrl" onclick="setSrc()" title="Create image">Create</button>
+</div>
+
+<!-- about button -->
+<a href="https://lb123658.github.io/Proton/about" target="_blank">
+<button id="about">About</button></a>
+</div>
+
+<!-- photo section -->
+<div id="canvas">
+<img src="" id="myImage">
+</div>
+<script>
+//variables
+var brightness = document.getElementById("brightness");
+var myImage = document.getElementById("myImage");
+
+//functions
+function startCreate() {
+document.getElementById("urlDiv").style.visibility = "visible";
+}
+function setSrc() {
+document.getElementById("urlDiv").style.visibility = "hidden";
+var url = document.getElementById("url");
+document.getElementById("myImage").src = url.value;
+canvas.style.width = document.getElementById("myImage").style.width;
+}
+//default effect levels
+document.getElementById("grey").value = "0";
+  
+//controls  
+function greyLevel() {
+document.getElementById("greyAmount").innerHTML = grey.value + "%";
+document.getElementById("myImage").style.filter = "grayscale(" + grey.value + "%)";
+}
+
+</script>
+</body>
+</html>
