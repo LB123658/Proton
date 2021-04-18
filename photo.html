@@ -76,7 +76,6 @@ top: 0px;
 left: 15%;
 width: 85%;
 height: 100%;
-background: white;
 z-index: -1;
 }
 #myImage {
@@ -145,7 +144,7 @@ background: #282828;
 
 <!-- url input -->
 <div id="urlDiv">
-<input type="text" id="url">
+<input type="text" id="url" placeholder="Paste image URL">
 <button id="setUrl" onclick="setSrc()" title="Create image">Create</button>
 </div>
 
@@ -185,4 +184,3 @@ document.getElementById("myImage").style.filter = "grayscale(" + grey.value + "%
 </script>
 </body>
 </html>
-
