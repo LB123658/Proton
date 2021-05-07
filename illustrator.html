@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proton Illustrator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="Photon: free online resources for a variety of things." />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/img/proton.png' type='image/png'/ > 
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet">   
+<style>
+* {
+font-family: 'Ubuntu', sans-serif;
+border: none;
+user-select: none;
+}
+body {
+background: #282828;
+}
+.control {
+width: 7.5%;
+height: 50px;
+background: transparent;
+color: #999999;
+border-radius: 2px;
+}
+.control:hover {
+opacity: 0.7;
+}
+#add-file {
+position: fixed;
+top: 0px;
+left: 0px;
+}
+#download {
+position: fixed;
+top: 0px;
+left: 7.5%;
+}
+#about {
+position: fixed;
+bottom: 10px;
+left: 1%;
+width: 13%;
+height: 30px;
+background: #282828;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+}
+#about:hover {
+opacity: 0.8;
+}
+#grey {
+position: fixed;
+top: 120px;
+left: 1%;
+width: 13%;
+cursor: pointer;
+}
+.effect-type {
+color: grey;
+font-size: 16px;
+cursor: default;
+}
+#greyP {
+position: fixed;
+top: 80px;
+left: 1%;
+}
+#art {
+position: absolute;
+top: 0px;
+left: 15%;
+width: 85%;
+height: 100%;
+z-index: -1;
+}
+#myImage {
+position: absolute;
+top: 2%;
+left: 2%;
+width: 96%;
+pointer-events: none;
+z-index: -1;
+}
+#urlDiv {
+user-select: auto;
+position: absolute;
+top: 0px;
+left: 30%;
+width: 40%;
+height: 100px;
+background: #383838;
+z-index: 1;
+border-radius: 10px;
+visibility: hidden;
+}
+#url {
+position: absolute;
+top: 35px;
+height: 30px;
+left: 5%;
+background: #383838;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 65%;
+}
+#url:hover {
+opacity: 0.8;
+}
+#url:focus {
+outline-width: 0;
+}
+#setUrl {
+position: absolute;
+top: 35px;
+height: 34px;
+right: 5%;
+background: #383838;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 20%;
+}
+#setUrl:hover {
+opacity: 0.8;
+}
+#ui {
+z-index: 2;
+background: #282828;
+cursor: default;
+}
+#downDiv {
+user-select: auto;
+position: absolute;
+top: 0px;
+left: 30%;
+width: 40%;
+height: 150px;
+background: #383838;
+z-index: 1;
+border-radius: 10px;
+visibility: hidden;
+}
+#saveDiv {
+user-select: auto;
+position: absolute;
+top: 0px;
+left: 30%;
+width: 40%;
+height: 100px;
+background: #383838;
+z-index: 1;
+border-radius: 10px;
+visibility: hidden;
+}
+#how-to-save {
+position: absolute;
+top: 10px;
+height: 30px;
+left: 5%;
+background: #383838;
+font-size: 16px;
+color: grey;
+width: 65%;
+}
+#confirmSave {
+position: absolute;
+top: 35px;
+height: 34px;
+right: 5%;
+background: #383838;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 20%;
+}
+#confirmSave:hover {
+opacity: 0.8;
+}
+#canvas {
+position: fixed;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+z-index: 1;
+cursor: crosshair;
+}
+
+#width {
+position: absolute;
+top: 160px;
+height: 30px;
+left: 1%;
+background: transparent;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 13%;
+}
+#width:hover {
+opacity: 0.8;
+}
+#width:focus {
+outline-width: 0;
+}
+#color {
+position: absolute;
+top: 210px;
+height: 30px;
+left: 1%;
+background: transparent;
+border: 1px solid grey;
+border-radius: 2px;
+font-size: 16px;
+color: grey;
+width: 13%;
+}
+#color:hover {
+opacity: 0.8;
+}
+#color:focus {
+outline-width: 0;
+}
+</style>
+<body>
+<div id="ui">
+<!-- controls -->
+<button class="control" id="add-file" title="Add photo by URL" onclick="startCreate()"><span class="material-icons">image</span></button>
+<button class="control" id="download" title="Save art" onclick="showSave()"><span class="material-icons">save</span></button>
+
+<!-- photo effects -->
+<p class="effect-type" id="greyP">Greyscale <span id="greyAmount"></span></p>
+<input type="range" id="grey" onclick="greyLevel(); bw()" min="0" max="200">
+
+<!-- about button -->
+<a href="https://lb123658.github.io/Proton/aboutdraw" target="_blank">
+<button id="about">About</button></a>
+
+<!-- line weight -->
+<input type="text" id="width" autocomplete="off" value="5" placeholder="Line weight" title="Line weight">
+
+<!-- line color -->
+<input type="text" id="color" autocomplete="off" placeholder="Line color" title="Line color">
+
+</div>
+
+<!-- url input -->
+<div id="urlDiv">
+<input type="text" id="url" placeholder="Paste image URL" autocomplete="off">
+<button id="setUrl" onclick="setSrc()" title="Create image">Create</button>
+</div>
+
+<!-- how to save -->
+<div id="saveDiv">
+<p id="how-to-save">Right click on your drawing to save as PNG or copy. Screenshot to save all.</p>
+<button id="confirmSave" onclick="hidesaveDiv()">Ok</button>
+</div>
+
+<!-- photo section -->
+<div id="art">
+<img src="" id="myImage">
+<canvas id="canvas"></canvas>
+</div>
+<script>
+//variables
+var brightness = document.getElementById("brightness");
+var myImage = document.getElementById("myImage");
+var width = document.getElementById("width");
+var color = document.getElementById("color");
+
+//functions
+function startCreate() {
+document.getElementById("urlDiv").style.visibility = "visible";
+}
+function setSrc() {
+document.getElementById("urlDiv").style.visibility = "hidden";
+var url = document.getElementById("url");
+document.getElementById("myImage").src = url.value;
+canvas.style.width = document.getElementById("myImage").style.width;
+}
+//default effect levels
+document.getElementById("grey").value = "0";
+  
+//controls  
+function greyLevel() {
+document.getElementById("greyAmount").innerHTML = grey.value + "%";
+document.getElementById("myImage").style.filter = "grayscale(" + grey.value + "%)";
+}
+function  hidesaveDiv() {
+document.getElementById("saveDiv").style.visibility = "hidden";
+}
+function  showSave() {
+document.getElementById("saveDiv").style.visibility = "visible";
+}
+//drawing script
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+let coord = { x: 0, y: 0 };
+
+document.addEventListener("mousedown", start);
+document.addEventListener("mouseup", stop);
+window.addEventListener("resize", resize);
+
+resize();
+
+function resize() {
+  ctx.canvas.width = window.innerWidth;
+  ctx.canvas.height = window.innerHeight;
+}
+function reposition(event) {
+  coord.x = event.clientX - canvas.offsetLeft;
+  coord.y = event.clientY - canvas.offsetTop;
+}
+function start(event) {
+  document.addEventListener("mousemove", draw);
+  reposition(event);
+}
+function stop() {
+  document.removeEventListener("mousemove", draw);
+}
+function draw(event) {
+  ctx.beginPath();
+  ctx.lineWidth = width.value;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = color.value;
+  ctx.moveTo(coord.x, coord.y);
+  reposition(event);
+  ctx.lineTo(coord.x, coord.y);
+  ctx.stroke();
+}
+</script>
+</body>
+</html>
