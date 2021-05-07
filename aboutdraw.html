@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proton Illustrator, free online drawing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="Photon: free online resources for a variety of things." />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/img/proton.png' type='image/png'/ > 
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet">   
+<style>
+* {
+font-family: 'Ubuntu', sans-serif;
+border: none;
+}
+body {
+background: #282828;
+cursor: default;
+}
+#center {
+position: absolute;
+top: 70px;
+left: 15%;
+width: 70%;
+text-align: center;
+font-size: 50px;
+color: grey;
+line-height: 1;
+pointer-events: none;
+}
+#logo {
+width: 180px;
+height: 180px;
+pointer-events: none;
+}
+.button {
+background: #282828;
+border: 1px solid grey;
+border-radius: 2px;
+color: grey;
+text-align: center;
+font-size: 20px;
+pointer-events: auto;
+}
+.button:hover {
+opacity: 0.8;
+}
+#company {
+position: absolute;
+top: 10px;
+left: 10px;
+height: 50px;
+}
+#animate {
+position: absolute;
+top: 305px;
+left: 0px;
+height: 60px;
+z-index: -1;
+width: 70%;
+background: red;
+animation: example;
+animation-duration: 3.0s;
+animation-iteration-count: 1;
+pointer-events: none;
+}
+@keyframes example {
+ 
+  0% {width: 0px;}
+  100%   {width: 70%;}
+
+}
+</style>
+<body>
+<p id="center">
+<img src="https://lb123658.github.io/img/proton.png" id="logo"/><br>
+<span style="color: white;">Proton Illustrator</span><br><br><span style="font-size: 30px;">Free online drawing.</span><br><br>
+<a href="https://lb123658.github.io/Proton/illustrator">
+<button class="button" id="open"><span class="material-icons" style="font-size: 40px;">launch</span>Website</button></a>
+<a href="https://lb123658.github.io/Proton/illustrator" download>
+<button class="button" id="download"><span class="material-icons" style="font-size: 40px;">save_alt</span>Download</button></a>
+</p>
+
+<a href="https://lb123658.github.io">
+<button class="button" id="company" title="Open Photon homepage">Created by Photon</button></a>
+
+<button id="animate"></button>
+
+</body>
+</html>
