@@ -132,9 +132,15 @@ width: 20%;
 opacity: 0.8;
 }
 #ui {
-z-index: 2;
-background: #282828;
+z-index: 1;
+background: #383838;
 cursor: default;
+visibility: hidden;
+position: absolute;
+top: 0px;
+width: 15%;
+height: 100%;
+left: 0px;
 }
 #downDiv {
 user-select: auto;
@@ -194,18 +200,17 @@ height: 100%;
 z-index: 1;
 cursor: crosshair;
 }
-
 #width {
 position: absolute;
 top: 160px;
 height: 30px;
-left: 1%;
+left: 2%;
 background: transparent;
 border: 1px solid grey;
 border-radius: 2px;
 font-size: 16px;
 color: grey;
-width: 13%;
+width: 90%;
 }
 #width:hover {
 opacity: 0.8;
@@ -217,13 +222,13 @@ outline-width: 0;
 position: absolute;
 top: 210px;
 height: 30px;
-left: 1%;
+left: 2%;
 background: transparent;
 border: 1px solid grey;
 border-radius: 2px;
 font-size: 16px;
 color: grey;
-width: 13%;
+width: 90%;
 }
 #color:hover {
 opacity: 0.8;
@@ -272,6 +277,7 @@ outline-width: 0;
 <canvas id="canvas"></canvas>
 </div>
 <script>
+document.getElementById("ui").style.visibility = "visible";
 //variables
 var brightness = document.getElementById("brightness");
 var myImage = document.getElementById("myImage");
