@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proton | Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" content="Photon: free online resources for a variety of things." />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/img/proton.png' type='image/png'/ > 
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet">   
+<style>
+* {
+font-family: 'Ubuntu', sans-serif;
+border: none;
+}
+body {
+background: #282828;
+cursor: default;
+}
+#center {
+position: absolute;
+top: 70px;
+left: 15%;
+width: 70%;
+text-align: center;
+font-size: 50px;
+color: grey;
+line-height: 1;
+pointer-events: none;
+}
+#logo {
+width: 180px;
+height: 180px;
+pointer-events: none;
+}
+.button {
+background: #282828;
+border: 1px solid grey;
+border-radius: 2px;
+color: grey;
+text-align: center;
+font-size: 25px;
+pointer-events: auto;
+padding: 10px;
+}
+.button:hover {
+opacity: 0.8;
+}
+#company {
+position: absolute;
+top: 10px;
+left: 10px;
+height: 50px;
+}
+#animate {
+position: absolute;
+top: 305px;
+left: 0px;
+height: 60px;
+z-index: -1;
+width: 70%;
+background: red;
+animation: example;
+animation-duration: 3.0s;
+animation-iteration-count: 1;
+pointer-events: none;
+}
+@keyframes example {
+ 
+  0% {width: 0px;}
+  100%   {width: 70%;}
+
+}
+#help {
+position: absolute;
+top: 10px;
+right: 10px;
+height: 50px;
+}
+#sign-in {
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+background: #282828;
+z-index: 2;
+visibility: hidden;
+}
+#sign-in-text {
+position: absolute;
+top: 100px;
+left: 0px;
+width: 100%;
+text-align: center;
+color: grey;
+font-size: 30px;
+user-select: none;
+}
+#input {
+font-size: 18px;
+text-align: left;
+width: 300px;
+position: absolute;
+top: 220px;
+left: 50%;
+margin-left: -150px;
+}
+#input:focus {
+outline-width: 0;
+border: 1px solid lightgrey;
+}
+#continue {
+position: absolute;
+top: 300px;
+left: 50%;
+width: 320px;
+margin-left: -150px;
+font-size: 18px;
+}
+</style>
+<body>
+<div id="pre">
+<p id="center">
+<img src="https://lb123658.github.io/img/proton.png" id="logo"/><br>
+<span style="color: white;" id="proton">Proton</span><br><br><span style="font-size: 30px;">Free online resources for art and coding.</span><br><br>
+<a href="https://lb123658.github.io/Proton/illustrator">
+<button class="button" id="open"><span class="material-icons" style="font-size: 40px;">brush</span>Illustrator</button></a>
+<a href="https://lb123658.github.io/Proton/" download>
+<button class="button" id="download"><span class="material-icons" style="font-size: 40px;">code</span>Code editor</button></a>
+<a href="https://lb123658.github.io/Proton/photo" download>
+<button class="button" id="photo-editor"><span class="material-icons" style="font-size: 40px;">photo</span>Photo editor</button></a>
+</p>
+
+<a href="https://lb123658.github.io">
+<button class="button" id="company" title="Open Photon homepage">Created by Photon</button></a>
+
+<button class="button" id="help" title="Sign in to Proton" onclick="login()"><span class="material-icons" style="font-size:30px;" id="b" onclick="login()">login</span></button>
+<button id="animate"></button>
+</div>
+
+<div id="sign-in">
+<p id="sign-in-text">Sign in to Photon</p>
+<form action="https://lb123658.github.io/Proton/home" id="form">
+<input type="text" id="input" placeholder="Username" autocomplete="off" class="button" name="f">
+</form>
+<button id="continue" type="submit" form="form" class="button">Next</button>
+</div>
+
+<script>
+var title = document.getElementById("proton");
+var b = document.getElementById("b");
+if (window.location.search == "") {
+title.innerHTML = "Proton";
+} else if (location.search.split("=")[1] == "Proton") {
+title.innerHTML = "Proton";
+} else if (location.search.split("=")[1] == "proton") {
+title.innerHTML = "Proton";
+} else {
+title.innerHTML = "Welcome, " + location.search.split("=")[1];
+b.innerHTML = "logout";
+b.title = "Sign out";
+}
+function login() {
+document.getElementById("sign-in").style.visibility = "visible";
+document.getElementById("pre").style.visibility = "hidden";
+}
+function out() {
+location.replace("https://lb123658.github.io/Proton/home");
+}
+</script>
+</body>
+</html>
