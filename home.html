@@ -158,6 +158,8 @@ title.innerHTML = "Proton";
 title.innerHTML = "Proton";
 } else if (location.search.split("=")[1] == "proton") {
 title.innerHTML = "Proton";
+} else if (location.search.split("=")[1] == "") {
+title.innerHTML = "Proton";
 } else {
 title.innerHTML = "Welcome, " + location.search.split("=")[1];
 b.innerHTML = "logout";
