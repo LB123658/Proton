@@ -136,7 +136,7 @@ font-size: 18px;
 <a href="https://lb123658.github.io">
 <button class="button" id="company" title="Open Photon homepage">Created by Photon</button></a>
 
-<button class="button" id="help" title="Sign in to Proton" onclick="login()"><span class="material-icons" style="font-size:30px;" id="b" onclick="login()">login</span></button>
+<button class="button" id="help" title="Sign in to Proton"><span class="material-icons" style="font-size:30px;" id="b">login</span></button>
 <button id="animate"></button>
 </div>
 
@@ -149,6 +149,7 @@ font-size: 18px;
 </div>
 
 <script>
+document.getElementById("b").addEventListener("click", login);
 var title = document.getElementById("proton");
 var b = document.getElementById("b");
 if (window.location.search == "") {
@@ -161,12 +162,14 @@ title.innerHTML = "Proton";
 title.innerHTML = "Welcome, " + location.search.split("=")[1];
 b.innerHTML = "logout";
 b.title = "Sign out";
+b.removeEventListener("click", login);
+b.addEventListener("click", logout);
 }
 function login() {
 document.getElementById("sign-in").style.visibility = "visible";
 document.getElementById("pre").style.visibility = "hidden";
 }
-function out() {
+function logout() {
 location.replace("https://lb123658.github.io/Proton/home");
 }
 </script>
